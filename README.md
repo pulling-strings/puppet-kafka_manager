@@ -1,79 +1,38 @@
-# kafka_manager
+# Intro
 
-#### Table of Contents
+This module sets up [kafka manager](https://github.com/yahoo/kafka-manager)
 
-1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with kafka_manager](#setup)
-    * [What kafka_manager affects](#what-kafka_manager-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with kafka_manager](#beginning-with-kafka_manager)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
 
-## Overview
+# Usage
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+The module sets up the service and deploys the artifact:
 
-## Module Description
+```puppet
+  class {'kafka_manager':
+    url     => 'http://yourhost/kafka-manager-1.0-SNAPSHOT.zip'
+  }
+  
+  class {'kafka_manager::config':
+    zkhosts => '192.168.1.3:2181'
+  }
+```
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
+Java has to be supplied externally see [jdk](https://github.com/pulling-strings/puppet-jdk)
 
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
 
-## Setup
+# Copyright and license
 
-### What kafka_manager affects
+Copyright [2015] [Ronen Narkis]
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
 
-### Setup Requirements **OPTIONAL**
+You may obtain a copy of the License at:
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+  [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-### Beginning with kafka_manager
-
-The very basic steps needed for a user to get the module up and running.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
-
-## Usage
-
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
-
-## Reference
-
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
-
-## Limitations
-
-This is where you list OS compatibility, version compatibility, etc.
-
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
