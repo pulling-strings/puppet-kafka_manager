@@ -7,18 +7,21 @@ class kafka_manager(
   $artifact = "kafka-manager-${version}"
   $dest = "/opt/kafka-manager/${artifact}"
 
+  package{'unzip':
+    ensure  => present
+  } ->
+
   archive {'kafka-manager':
     ensure     => present,
     url        => $url,
     checksum   => false,
-    src_target => '/usr/src',
-    target     => '/opt',
+    src_target => '/usr/src/',
+    target     => '/opt/',
     extension  => 'zip',
-    notify     => Service['kafka-manager']
   } ->
 
   upstart::service{'kafka-manager':
-    exec  => 'bin/kafka-manager',
+    exec  => "./bin/kafka-manager -Dconfig.file=${dest}/conf/application.conf",
     user  => 'root',
     group => 'root',
     chdir => $dest
