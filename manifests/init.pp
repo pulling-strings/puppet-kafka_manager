@@ -1,7 +1,7 @@
 # Setting up https://github.com/yahoo/kafka-manager
 class kafka_manager(
-  $url,
-  $version = '1.0-SNAPSHOT',
+  $repo,
+  $version = '1.1',
 ) {
 
   $artifact = "kafka-manager-${version}"
@@ -13,7 +13,7 @@ class kafka_manager(
 
   archive {'kafka-manager':
     ensure     => present,
-    url        => $url,
+    url        => "${repo}/kafka-manager-${version}.zip",
     checksum   => false,
     src_target => '/usr/src/',
     target     => '/opt/',
